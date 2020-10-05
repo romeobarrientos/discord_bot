@@ -4,6 +4,7 @@ const { prefix, token } = require('./config.json');
 
 client.on('ready', () => {
     console.log(`logged in as ${client.user.tag}!`);
+    console.log(`logged in as ${client.user.id}!`);
 });
 
 client.on('message', msg => {
@@ -37,8 +38,14 @@ client.on('message', msg => {
         const end_channel = client.channels.cache.get('754533082752614400');
         const my_user_id = '304745620411777024';
         // client.users.id;
-        // console.log(msg.channel.client.users.cache);
+        console.log(msg.channel.client.users.cache);
         console.log(client.channels.cache);
+    }
+    else if (command === 'tuff') {
+        msg.channel.send(`But you aint tuff ${msg.author.username}, you just a little bitch`);
+    }
+    else if (command === 'findmeanewfriend') {
+        msg.channel.send('LUL');
     }
 });
 
