@@ -24,20 +24,19 @@ client.on('message', msg => {
         .addFields(
             { name: '//help', value: 'The help command will return a list of commands that you can use' },
             { name: '//ping', value: 'The ping command will return with the best possible answer' },
-            { name: '//split', value: 'Currently implmenting this feature' },
+            { name: '//dm', value: 'Send a DM on behalf of Realm Bot' },
+            { name: '//tuff', value: 'You dont want to find out' },
+            { name: '//findmeanewfriend', value: 'You really dont want to find this one out' },
         )
         .setTimestamp()
-        .setFooter('This is the footer');
+        .setFooter('Realm bot gives you kisses');
         msg.channel.send(embed);
     }
     else if(msg.content.startsWith(`${prefix}me`)) {
         msg.channel.send(`Username: ${msg.author.username}\nID: ${msg.author.id}`);
     }
-    else if (command === 'split') {
-        const start_channel = client.channels.cache.get('754533057704493056');
-        const end_channel = client.channels.cache.get('754533082752614400');
-        const my_user_id = '304745620411777024';
-        // client.users.id;
+    else if (command === 'dm') {
+        msg.channel.send(msg.mentions);
         console.log(msg.channel.client.users.cache);
         console.log(client.channels.cache);
     }
