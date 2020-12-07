@@ -5,7 +5,7 @@ const {
     token
 } = require('./config.json');
 
-errorsChannel = '785640637952819261'
+errorsChannel = '785640637952819261';
 
 client.on('ready', () => {
     console.log(`logged in as ${client.user.tag}!`);
@@ -55,6 +55,8 @@ client.on('message', msg => {
         msg.channel.send(`But you aint tuff ${msg.author.username}, you just a little bitch`);
     } else if (command === 'findmeanewfriend') {
         msg.channel.send('LUL');
+    } else {
+        msg.channel.send("Sorry kid it looks like you did something wrong");
     }
 });
 
