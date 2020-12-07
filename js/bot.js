@@ -58,8 +58,8 @@ client.on('message', msg => {
     } else if (command === 'dm') {
         try {
             msg.channel.send(msg.mentions);
-            console.log(msg.channel.client.users.cache);
-            console.log(client.channels.cache);
+            //console.log(msg.channel.client.users.cache);
+            //console.log(client.channels.cache);
         } catch {
             error_messages("Error in //dm command")
         }
