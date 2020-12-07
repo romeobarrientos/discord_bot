@@ -19,7 +19,7 @@ client.on('message', msg => {
     const command = args.shift().toLowerCase();
 
     if (command === 'ping') {
-        errorsChannel.send("Test")
+        client.channels.cache.get(errorsChannel).send('Test send')
         msg.channel.send('pong!');
     } else if (command === 'help') {
         const embed = new Discord.MessageEmbed()
