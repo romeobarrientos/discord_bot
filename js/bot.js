@@ -19,38 +19,50 @@ client.on('message', msg => {
     const command = args.shift().toLowerCase();
 
     if (command === 'ping') {
-        client.channels.cache.get(errorsChannel).send('Test send')
+        error_messages("test")
         msg.channel.send('pong!');
     } else if (command === 'help') {
-        const embed = new Discord.MessageEmbed()
-            .setColor('#0000FF')
-            .setTitle('Here are a list of commands to use')
-            .setAuthor('Test bot')
-            .addFields({
-                name: '//help',
-                value: 'The help command will return a list of commands that you can use'
-            }, {
-                name: '//ping',
-                value: 'The ping command will return with the best possible answer'
-            }, {
-                name: '//dm',
-                value: 'Send a DM on behalf of Realm Bot'
-            }, {
-                name: '//tuff',
-                value: 'You dont want to find out'
-            }, {
-                name: '//findmeanewfriend',
-                value: 'You really dont want to find this one out'
-            }, )
-            .setTimestamp()
-            .setFooter('Realm bot gives you kisses');
-        msg.channel.send(embed);
+        try {
+            const embed = new Discord.MessageEmbed()
+                .setColor('#0000FF')
+                .setTitle('Here are a list of commands to use')
+                .setAuthor('Test bot')
+                .addFields({
+                    name: '//help',
+                    value: 'The help command will return a list of commands that you can use'
+                }, {
+                    name: '//ping',
+                    value: 'The ping command will return with the best possible answer'
+                }, {
+                    name: '//dm',
+                    value: 'Send a DM on behalf of Realm Bot'
+                }, {
+                    name: '//tuff',
+                    value: 'You dont want to find out'
+                }, {
+                    name: '//findmeanewfriend',
+                    value: 'You really dont want to find this one out'
+                }, )
+                .setTimestamp()
+                .setFooter('Realm bot gives you kisses');
+            msg.channel.send(embed);
+        } catch {
+            error_messages("error when sending help command")
+        }
     } else if (msg.content.startsWith(`${prefix}me`)) {
-        msg.channel.send(`Username: ${msg.author.username}\nID: ${msg.author.id}`);
+        try {
+            msg.channel.send(`Username: ${msg.author.username}\nID: ${msg.author.id}`);
+        } catch {
+            error_messages("Error in //me command")
+        }
     } else if (command === 'dm') {
-        msg.channel.send(msg.mentions);
-        console.log(msg.channel.client.users.cache);
-        console.log(client.channels.cache);
+        try {
+            msg.channel.send(msg.mentions);
+            console.log(msg.channel.client.users.cache);
+            console.log(client.channels.cache);
+        } catch {
+            error_messages("Error in //dm command")
+        }
     } else if (command === 'tuff') {
         msg.channel.send(`But you aint tuff ${msg.author.username}, you just a little bitch`);
     } else if (command === 'findmeanewfriend') {
@@ -59,5 +71,9 @@ client.on('message', msg => {
         msg.channel.send("Sorry kid it looks like you did something wrong");
     }
 });
+
+function error_messages(st) {
+    client.channels.cache.get(errorsChannel).send(st)
+}
 
 client.login(token);
