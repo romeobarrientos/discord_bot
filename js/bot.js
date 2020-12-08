@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const https = require('https')
 const {
     prefix,
     token
@@ -63,11 +64,38 @@ client.on('message', msg => {
         } catch {
             error_messages("Error in //dm command")
         }
+        
     } else if (command === 'tuff') {
         msg.channel.send(`But you aint tuff ${msg.author.username}, you just a little bitch`);
     } else if (command === 'findmeanewfriend') {
         msg.channel.send('LUL');
-    } else {
+    } 
+    else if (command === 'dadjoke'){
+        try{
+            https.get('https://us-central1-dadsofunny.cloudfunctions.net/DadJokes/random/jokes', (response) => {
+                let data = '';
+                response.on('data', (chunk) => {
+                    data += chunk;
+                });
+
+                response.on('end', (error) => {
+                    const obj = JSON.parse(data)
+                    msg.channel.send(obj.setup);
+                    sleep(3000).then(() => {
+                        msg.channel.send(obj.punchline);
+                    });
+                    
+                });
+            })
+            .on('error', (error) => {
+                error_messages(error);
+            });
+        }
+        catch (err) {
+            error_messages(err)
+        }
+    }
+    else {
         msg.channel.send("Sorry kid it looks like you did something wrong");
     }
 });
@@ -75,5 +103,9 @@ client.on('message', msg => {
 function error_messages(st) {
     client.channels.cache.get(errorsChannel).send(st)
 }
+
+function sleep (time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+  }
 
 client.login(token);

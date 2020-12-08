@@ -9,7 +9,10 @@
   "author": "Darrin Knorr",
   "license": "ISC",
   "dependencies": {
+    "bot.js": "0.0.1",
     "discord.js": "^12.3.1",
-    "eslint": "^7.9.0"
+    "eslint": "^7.9.0",
+    "node": "^15.3.0",
+    "request": "^2.88.2"
   }
 }
