@@ -43,12 +43,16 @@ client.on('message', msg => {
                 }, {
                     name: '//findmeanewfriend',
                     value: 'You really dont want to find this one out'
-                }, )
+                }, {
+                    name: '//dadjoke',
+                    value:'Recieve a random dad joke'
+                } )
                 .setTimestamp()
                 .setFooter('Realm bot gives you kisses');
-            msg.channel.send(embed).catch(err => print(err));
-        } catch (err) {
-            error_messages("error when sending help command");
+            msg.channel.send(embed);
+        }
+        catch (err){
+            error_messages(err)
         }
     } else if (msg.content.startsWith(`${prefix}me`)) {
         try {
@@ -59,8 +63,6 @@ client.on('message', msg => {
     } else if (command === 'dm') {
         try {
 	    client.users.cache.get(`${msg.author.id}`).send(`You thought this wouldnt work now did you ${msg.author.username}`);
-            //console.log(msg.channel.client.users.cache);
-            //console.log(client.channels.cache);
         } catch {
             error_messages("Error in //dm command")
         }
