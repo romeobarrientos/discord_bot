@@ -20,7 +20,6 @@ client.on('message', msg => {
     const command = args.shift().toLowerCase();
 
     if (command === 'ping') {
-        error_messages("test")
         msg.channel.send('pong!');
     } else if (command === 'help') {
         try {
