@@ -45,9 +45,8 @@ client.on('message', msg => {
                 }, )
                 .setTimestamp()
                 .setFooter('Realm bot gives you kisses');
-            msg.channel.send(embed);
+            msg.channel.send(embed).catch(err => print(err));
         } catch (err) {
-            error_messages(err);
             error_messages("error when sending help command");
         }
     } else if (msg.content.startsWith(`${prefix}me`)) {
