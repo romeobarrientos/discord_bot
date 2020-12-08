@@ -57,7 +57,7 @@ client.on('message', msg => {
         }
     } else if (command === 'dm') {
         try {
-            msg.channel.send(msg.mentions);
+	    client.users.cache.get(`${msg.author.id}`).send(`You thought this wouldnt work now did you ${msg.author.username}`);
             //console.log(msg.channel.client.users.cache);
             //console.log(client.channels.cache);
         } catch {
