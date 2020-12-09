@@ -19,8 +19,11 @@ client.on('message', msg => {
     const args = msg.content.slice(prefix.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
 
+//ping command
     if (command === 'ping') {
         msg.channel.send('pong!');
+
+//help command
     } else if (command === 'help') {
         try {
             const embed = new Discord.MessageEmbed()
@@ -53,12 +56,16 @@ client.on('message', msg => {
         catch (err){
             error_messages(err)
         }
+
+//me command
     } else if (msg.content.startsWith(`${prefix}me`)) {
         try {
             msg.channel.send(`Username: ${msg.author.username}\nID: ${msg.author.id}`);
         } catch {
             error_messages("Error in //me command")
         }
+
+//dm channel
     } else if (command === 'dm') {
         try {
 	    client.users.cache.get(`${msg.author.id}`).send(`You thought this wouldnt work now did you ${msg.author.username}`);
@@ -66,11 +73,16 @@ client.on('message', msg => {
             error_messages("Error in //dm command")
         }
         
+//tuff command
     } else if (command === 'tuff') {
         msg.channel.send(`But you aint tuff ${msg.author.username}, you just a little bitch`);
+
+//findmeanewfriend command
     } else if (command === 'findmeanewfriend') {
         msg.channel.send('LUL');
     } 
+
+//dadjoke command
     else if (command === 'dadjoke'){
         try{
             https.get('https://us-central1-dadsofunny.cloudfunctions.net/DadJokes/random/jokes', (response) => {
@@ -95,6 +107,15 @@ client.on('message', msg => {
         catch (err) {
             error_messages(err)
         }
+    }
+
+//mute channel command
+    else if (command === 'mc') {
+        mems = msg.member.voice.channel.members;
+        mems.forEach(x => {
+            console.log(x.id)
+            
+        });
     }
     else {
         msg.channel.send("Sorry kid it looks like you did something wrong");
