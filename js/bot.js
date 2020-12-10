@@ -6,6 +6,8 @@ const {
     token
 } = require('./config.json');
 
+//develop branch test
+
 errorsChannel = '785640637952819261';
 
 client.on('ready', () => {
