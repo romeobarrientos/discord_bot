@@ -131,6 +131,8 @@ client.on('message', msg => {
             
         
     }
+    
+// jons tiny penis command
     else if (command == 'tinypenisplease') {
         msg.channel.send("Here you go...", {
             files: [
