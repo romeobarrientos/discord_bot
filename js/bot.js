@@ -134,7 +134,7 @@ client.on('message', msg => {
     else if (command == 'tinypenisplease') {
         msg.channel.send("Here you go...", {
             files: [
-                "images\\jknop2.PNG"
+                "images/jknop2.PNG"
             ]
         })
     }
