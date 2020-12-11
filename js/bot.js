@@ -47,7 +47,11 @@ client.on('message', msg => {
                     value: 'You really dont want to find this one out'
                 }, {
                     name: '//dadjoke',
-                    value:'Recieve a random dad joke'
+                    value:'Receive a random dad joke'
+                }, 
+		   {
+                    name: '//tinypenisplease',
+                    value:'Receive a small dick'
                 } )
                 .setTimestamp()
                 .setFooter('Realm bot gives you kisses');
